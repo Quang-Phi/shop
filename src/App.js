@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Route, Routes, useParams } from "react-router-dom";
+import IndexPage from "./Pages/IndexPage/IndexPage";
+import ProductPage from "./Pages/ProductPage/ProductPage";
+import useFetchData from "./Hook/useFetchData";
+import { myContext } from "./components/Context/Context";
+import DetailsPage from "./Pages/DetailsPage/DetailsPage";
 
 function App() {
+  const [popularProduct] = useFetchData("trending", 1, "");
+  const params = useParams();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <myContext.Provider value={{ popularProduct, params }}>
+      <Routes>
+        <Route path="/" element={<IndexPage />} />
+        <Route path="/shop-fashion/:category" element={<ProductPage />} />
+        <Route path="/product/:id" element={<DetailsPage />} />
+      </Routes>
+    </myContext.Provider>
   );
 }
 

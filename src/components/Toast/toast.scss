@@ -1,0 +1,80 @@
+.toast {
+    display: flex !important;
+    visibility: hidden;
+    position: fixed;
+    padding: 2rem 0;
+    top: 4rem;
+    right: 4rem;
+    align-items: center;
+    min-width: 40rem;
+    max-width: 45rem;
+    background-color: #fff !important;
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.08);
+    z-index: 999999;
+    &.active {
+      visibility: visible;
+      animation: slideInLeft ease 0.3s, fadeOut linear 1s 2s forwards;
+    }
+    &.success {
+      border-left: 0.5rem solid #47d864 !important;
+  
+      .icon {
+        color: #47d864;
+      }
+    }
+    &.error {
+      border-left: 0.5rem solid red !important;
+  
+      .icon {
+        color: red;
+      }
+    }
+    .icon {
+      padding: 0 1.6rem;
+      i {
+        font-size: 2.4rem;
+      }
+    }
+    .body {
+      flex-grow: 1;
+      h3 {
+        font: {
+          size: 1.6rem;
+          weight: 600;
+        }
+        color: #333;
+      }
+      p {
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        margin-top: 0.6rem;
+        color: #888;
+      }
+    }
+    .close {
+      padding: 0 1.6rem;
+      cursor: pointer;
+      i {
+        font-size: 2rem;
+        color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(calc(100% + 4rem));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(calc(10));
+    }
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+  
