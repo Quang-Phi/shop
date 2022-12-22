@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   checkElementActive,
   handleActiveElement,
@@ -21,9 +21,13 @@ export default function () {
   const [loading, setLoading] = useState(false);
   const [openMenuMobile, setOpenMenumobile] = useState(false);
   const [listMenuActive, setListMenuActive] = useState([]);
-
   const cartState = useSelector((state) => state.cart.cart);
   const totalState = useSelector((state) => state.cart.subTotal);
+  const navigate = useNavigate()
+  const [dashboardOpen, setDashBoardOpen] = useState(false)
+  if (dashboardOpen) {
+    navigate('/login')
+  }
 
   const handleSearchDataAPI = async () => {
     try {
@@ -42,7 +46,7 @@ export default function () {
         return;
       }
       setListSearch([]);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   useEffect(() => {
@@ -91,29 +95,26 @@ export default function () {
                     </li>
                     <li>
                       <div
-                        className={`item-inner ${
-                          checkElementActive(listMenuActive, "1")
-                            ? "active"
-                            : ""
-                        }`}
+                        className={`item-inner ${checkElementActive(listMenuActive, "1")
+                          ? "active"
+                          : ""
+                          }`}
                       >
                         <Link to={"/shop-fashion/shop"}>Products Page</Link>
                       </div>
                       <div
-                        className={`sub-list-menu ${
-                          checkElementActive(listMenuActive, "1")
-                            ? "active"
-                            : ""
-                        }`}
+                        className={`sub-list-menu ${checkElementActive(listMenuActive, "1")
+                          ? "active"
+                          : ""
+                          }`}
                       ></div>
                     </li>
                     <li>
                       <div
-                        className={`item-inner ${
-                          checkElementActive(listMenuActive, "2")
-                            ? "active"
-                            : ""
-                        }`}
+                        className={`item-inner ${checkElementActive(listMenuActive, "2")
+                          ? "active"
+                          : ""
+                          }`}
                       >
                         <span>Categories</span>
                         <i
@@ -125,20 +126,18 @@ export default function () {
                               e.target.id
                             );
                           }}
-                          className={`fa-solid fa-angle-right ${
-                            checkElementActive(listMenuActive, "2")
-                              ? "active"
-                              : ""
-                          } `}
+                          className={`fa-solid fa-angle-right ${checkElementActive(listMenuActive, "2")
+                            ? "active"
+                            : ""
+                            } `}
                         ></i>
                       </div>
 
                       <div
-                        className={`sub-list-menu ${
-                          checkElementActive(listMenuActive, "2")
-                            ? "active"
-                            : ""
-                        }`}
+                        className={`sub-list-menu ${checkElementActive(listMenuActive, "2")
+                          ? "active"
+                          : ""
+                          }`}
                       >
                         <li>
                           <Link to={"/shop-fashion/hoodies"} end>
@@ -164,36 +163,10 @@ export default function () {
                     </li>
                     <li>
                       <div
-                        className={`item-inner ${
-                          checkElementActive(listMenuActive, "3")
-                            ? "active"
-                            : ""
-                        }`}
-                      >
-                        <span>Blog</span>
-                        <i
-                          id="3"
-                          onClick={(e) => {
-                            handleActiveElement(
-                              listMenuActive,
-                              setListMenuActive,
-                              e.target.id
-                            );
-                          }}
-                          className={`fa-solid fa-angle-right ${
-                            checkElementActive(listMenuActive, "3")
-                              ? "active"
-                              : ""
-                          } `}
-                        ></i>
-                      </div>
-
-                      <div
-                        className={`sub-list-menu ${
-                          checkElementActive(listMenuActive, "3")
-                            ? "active"
-                            : ""
-                        }`}
+                        className={`sub-list-menu ${checkElementActive(listMenuActive, "3")
+                          ? "active"
+                          : ""
+                          }`}
                       >
                         <li>
                           <a href="">Our Blog</a>
@@ -374,12 +347,6 @@ export default function () {
                   </div>
                 </div>
               </li>
-              <li className="list-item">
-                <a href="" className="list-link">
-                  Blog
-                </a>
-                <ul className="sub-list"></ul>
-              </li>
             </ul>
             <div className="header-end">
               <div className="header-search">
@@ -387,9 +354,8 @@ export default function () {
                   onClick={() => {
                     handleOpen(searchOpen, setSearchOpen);
                   }}
-                  className={`fa-solid fa-magnifying-glass ${
-                    searchOpen ? "unactive" : ""
-                  }`}
+                  className={`fa-solid fa-magnifying-glass ${searchOpen ? "unactive" : ""
+                    }`}
                 ></i>
                 <div className={`search-content ${searchOpen ? "active" : ""}`}>
                   <input

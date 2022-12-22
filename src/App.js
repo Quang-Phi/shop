@@ -14,7 +14,7 @@ function App() {
   return (
     <myContext.Provider value={{ popularProduct, params }}>
       <Routes>
-        <Route path="/" element={<IndexPage />} />
+        <Route path="/" element={<IndexPage/>}/>
         <Route path="/shop-fashion/:category" element={<ProductPage />} />
         <Route path="/product/:id" element={<DetailsPage />} />
       </Routes>

@@ -17,9 +17,8 @@ const cartSlice = createSlice({
       );
 
       if (itemIndex !== -1) {
-        state.subTotal += ( product.productPrice * quantity );
+        state.subTotal += Math.round(product.productPrice) * quantity;
         state.cart[itemIndex].quantity += quantity;
-        console.log(state.subTotal)
 
         return;
       }
@@ -28,7 +27,7 @@ const cartSlice = createSlice({
         ...product,
         quantity: quantity,
       };
-      state.subTotal += product.productPrice * quantity;
+      state.subTotal += Math.round(product.productPrice) * quantity;
       state.cart.push(newCartItem);
     },
     removeFromCart: (state, action) => {
@@ -41,12 +40,12 @@ const cartSlice = createSlice({
       if (itemIndex >= 0) {
         if (product.quantity > 1) {
           state.cart[itemIndex].quantity -= 1;
-          state.subTotal -= state.cart[itemIndex].productPrice;
+          state.subTotal -= Math.round(state.cart[itemIndex].productPrice);
 
           return;
         }
         if (window.confirm("Remove this item?")) {
-          state.subTotal -= state.cart[itemIndex].productPrice;
+          state.subTotal -= Math.round(state.cart[itemIndex].productPrice);
           state.cart.splice(itemIndex, 1);
         }
         return;

@@ -186,9 +186,16 @@ export default function () {
                         <div className="product-attributes">
                           <div className="product-color">
                             <p>Color:</p>
-                            <span
-                              style={{ backgroundColor: `${product.color}` }}
-                            ></span>
+                            {
+                              product.color.map((color) => {
+                                return (
+
+                                  <span key={uuid()}
+                                    style={{ backgroundColor: `${color}` }}
+                                  ></span>
+                                )
+                              })
+                            }
                           </div>
                           <div className="product-size">
                             {product.size.map((element) => {

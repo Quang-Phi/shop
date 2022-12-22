@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function (props) {
-  const scrollFilter = () => {
-    window.scrollTo(0, 0);
-  };
   const {
     fieldCategoryActive,
     fieldBrandActive,
@@ -96,7 +93,6 @@ export default function (props) {
               fieldColorActive === "black" ? "active" : ""
             }`}
             onClick={() => {
-              scrollFilter();
               handleFieldClick(setColorProduct, setFieldColorActive, "black");
             }}
           >

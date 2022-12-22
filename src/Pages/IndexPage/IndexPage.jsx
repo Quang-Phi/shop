@@ -19,6 +19,11 @@ export default function () {
   const [listSneakers] = useFetchData("sneaker", 1, "");
   const [listBags] = useFetchData("bag", 1, "");
 
+  const [listTshirt] = useFetchData("t-shirt", 1, "");
+  const [listHoodies] = useFetchData("hoodies", 1, "");
+  const [listForMan] = useFetchData("for-man", 1, "");
+  const [listForWoMen] = useFetchData("for-women", 1, "");
+
   return (
     <div id="index-page">
       <div className="container-fluit">
@@ -46,7 +51,7 @@ export default function () {
                     <img src="https://i.postimg.cc/6p6CDV3C/women.jpg" alt="" />
                     <div className="title">
                       <h1>For Women</h1>
-                      <span>8 products</span>
+                      <span>{listForWoMen.length} products</span>
                     </div>
                   </Link>
                 </div>
@@ -55,7 +60,7 @@ export default function () {
                     <img src="https://i.postimg.cc/x8hpt1Ks/man.jpg" alt="" />
                     <div className="title">
                       <h1>For Man</h1>
-                      <span>8 products</span>
+                      <span>{listForMan.length} products</span>
                     </div>
                   </Link>
                 </div>
@@ -106,7 +111,7 @@ export default function () {
                       />
                       <div className="title">
                         <h1>Sneakers</h1>
-                        <span>8 products</span>
+                        <span>{listSneakers.length} products</span>
                       </div>
                     </Link>
                   </div>
@@ -121,7 +126,7 @@ export default function () {
                       />
                       <div className="title">
                         <h1>Hoodies</h1>
-                        <span>8 products</span>
+                        <span>{listHoodies.length} products</span>
                       </div>
                     </Link>
                   </div>
@@ -138,7 +143,7 @@ export default function () {
                       />
                       <div className="title">
                         <h1>Bags</h1>
-                        <span>8 products</span>
+                        <span>{listBags.length} products</span>
                       </div>
                     </Link>
                   </div>
@@ -153,7 +158,7 @@ export default function () {
                       />
                       <div className="title">
                         <h1>T-Shirt</h1>
-                        <span>8 products</span>
+                        <span>{listTshirt.length} products</span>
                       </div>
                     </Link>
                   </div>
